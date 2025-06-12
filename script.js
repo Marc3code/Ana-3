@@ -1,4 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const loginContainer = document.getElementById("login-container");
+  const senhaInput = document.getElementById("senha-input");
+  const btnAcessar = document.getElementById("btn-acessar");
+  const mensagemErro = document.getElementById("mensagem-erro");
+  const conteudoPrincipal = document.querySelectorAll(
+    "header, section, footer"
+  );
+
+  // Função para mostrar ou esconder o conteúdo principal
+  function toggleConteudoPrincipal(mostrar) {
+    conteudoPrincipal.forEach((el) => {
+      el.style.display = mostrar ? "" : "none";
+    });
+  }
+
+  // Inicialmente esconde o conteúdo principal
+  toggleConteudoPrincipal(false);
+
+  function verificarSenha() {
+    fetch("https://ana-3-production.up.railway.app/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ senha: senhaInput.value }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Senha incorreta");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        loginContainer.style.display = "none";
+        toggleConteudoPrincipal(true);
+        mensagemErro.textContent = "";
+      })
+      .catch((error) => {
+        mensagemErro.textContent = "Senha incorreta! Tente novamente.";
+        senhaInput.value = "";
+        senhaInput.focus();
+      });
+  }
+
+  btnAcessar.addEventListener("click", verificarSenha);
+  senhaInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      verificarSenha();
+    }
+  });
+
   // Carrossel de frases
   const frases = [
     "❤️ Seu cuidado comigo, apesar das vezes vir em forma de batido hihi, mas mesmo assim amo ❤️",
@@ -32,27 +83,75 @@ document.addEventListener("DOMContentLoaded", () => {
   const momentos = [
     {
       tipo: "imagem",
-      src: "./assets/mulher-bonita-olhando-para-o-namorado.jpg",
-      alt: "Nossa foto juntos",
-      legenda: "Nosso primeiro encontro 💖",
-    },
-    {
-      tipo: "video",
-      src: "https://www.w3schools.com/html/mov_bbb.mp4",
-      legenda: "Um momento especial",
+      src: "./assets/foto1.jpg",
+      alt: "",
+      legenda: "Últma vez que fomos na tabuleiria. Amei esse dia",
     },
     {
       tipo: "imagem",
-      src: "https://via.placeholder.com/600x400?text=Nossa+viagem",
-      alt: "Nossa viagem",
-      legenda: "Quando fomos viajar juntos ✈️",
+      src: "./assets/foto2.jpg",
+      alt: "",
+      legenda: "sai quando a proxima? hihi",
     },
     {
       tipo: "imagem",
-      src: "https://via.placeholder.com/600x400?text=Aniversário",
-      alt: "Meu aniversário",
-      legenda: "Meu aniversário com você 🎂",
+      src: "./assets/foto3.jpg",
+      alt: "",
+      legenda: "dia da massinhaaa",
     },
+    {
+      tipo: "imagem",
+      src: "./assets/foto4.jpg",
+      alt: "",
+      legenda: "huuumm dia que casamos aí",
+    },
+    {
+      tipo: "imagem",
+      src: "./assets/foto5.jpg",
+      alt: "",
+      legenda: "saudade dos treininhos together",
+    },
+    {
+      tipo: "imagem",
+      src: "./assets/foto6.jpg",
+      alt: "",
+      legenda: "Ja teve foto dos artistas, agora das artes neh",
+    },
+    {
+      tipo: "imagem",
+      src: "./assets/foto7.jpg",
+      alt: "",
+      legenda: "Bem tumblrs",
+    },
+    { tipo: "imagem", src: "./assets/foto8.jpg", alt: "", legenda: "Só love" },
+    {
+      tipo: "imagem",
+      src: "./assets/foto9.jpg",
+      alt: "",
+      legenda: "Linda modeusooooooo",
+    },
+    {
+      tipo: "imagem",
+      src: "./assets/foto11.jpg",
+      alt: "",
+      legenda: "Tão fofinha com o buquê",
+    },
+    {
+      tipo: "imagem",
+      src: "./assets/foto12.jpg",
+      alt: "",
+      legenda: "a gente ensaiando pra quando formos na Itália",
+    },
+    {
+      tipo: "imagem",
+      src: "./assets/foto14.jpg",
+      alt: "",
+      legenda: "Dei valor a esse dia KKKKKKKK",
+    },
+
+    { tipo: "video", src: "./assets/video1.mp4", alt: "", legenda: "" },
+    { tipo: "video", src: "./assets/video2.mp4", alt: "", legenda: "" },
+    { tipo: "video", src: "./assets/video3.mp4", alt: "", legenda: "" },
   ];
 
   // Inicializa o carrossel de momentos
@@ -129,90 +228,96 @@ document.addEventListener("DOMContentLoaded", () => {
   inicializarCarrossel();
 
   // Auto-play do carrossel (opcional)
-  setInterval(() => moverCarrossel(1), 5000);
+  setInterval(() => moverCarrossel(1), 10000);
 
-  // Quiz do Amor
-  const quizPerguntas = [
-    {
-      pergunta: "Qual é o meu apelido favorito que você me chama?",
-      nivel: "Fácil",
-      opcoes: ["Mozin", "Amor", "Gatinho", "Neném"],
-      correta: "Mozin",
-    },
-    {
-      pergunta: "Onde foi nosso primeiro encontro?",
-      nivel: "Média",
-      opcoes: ["Shopping", "Praça", "Colégio", "Casa de um amigo"],
-      correta: "Shopping",
-    },
-    {
-      pergunta: "Qual dessas comidas a gente ama comer juntinhos?",
-      nivel: "Difícil",
-      opcoes: ["Pizza", "Cuscuz", "Sorvete", "Hambúrguer"],
-      correta: "Cuscuz",
-    },
-  ];
+  // Referências aos elementos
+  const listaMetas = document.getElementById("lista-metas");
+  const inputNovaMeta = document.getElementById("nova-meta");
+  const botaoAdicionar = document.getElementById("adicionar-meta");
 
-  let indiceAtual = 0;
-  let acertos = 0;
+  // Carregar metas do localStorage - agora retorna array vazio se não houver metas salvas
+  function carregarMetas() {
+    const metasSalvas = localStorage.getItem("metasAmor");
+    return metasSalvas ? JSON.parse(metasSalvas) : [];
+  }
 
-  function mostrarPergunta() {
-    const perguntaAtual = quizPerguntas[indiceAtual];
-    document.getElementById("quiz-pergunta").textContent =
-      perguntaAtual.pergunta;
+  // Salvar metas no localStorage
+  function salvarMetas(metas) {
+    localStorage.setItem("metasAmor", JSON.stringify(metas));
+  }
 
-    const opcoesContainer = document.getElementById("quiz-opcoes");
-    opcoesContainer.innerHTML = "";
+  // Renderizar lista de metas
+  function renderizarMetas() {
+    const metas = carregarMetas();
+    listaMetas.innerHTML = "";
 
-    const nivelContainer = document.getElementById("nivel");
-    nivelContainer.innerHTML = `Nível: ${perguntaAtual.nivel}`;
+    if (metas.length === 0) {
+      // Mostra mensagem quando não há metas
+      const li = document.createElement("li");
+      li.textContent = "Nenhuma meta adicionada ainda...";
+      li.style.textAlign = "center";
+      li.style.color = "#888";
+      listaMetas.appendChild(li);
+      return;
+    }
 
-    perguntaAtual.opcoes.forEach((opcao) => {
-      const botao = document.createElement("button");
-      botao.textContent = opcao;
+    metas.forEach((meta, index) => {
+      const li = document.createElement("li");
+      li.className = "meta-item";
 
-      botao.onclick = () => {
-        // Adiciona feedback visual
-        if (opcao === perguntaAtual.correta) {
-          botao.style.backgroundColor = "#4CAF50"; // Verde
-          acertos++;
-        } else {
-          botao.style.backgroundColor = "#f44336"; // Vermelho
-        }
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.checked = meta.concluida;
+      input.addEventListener("change", () => {
+        metas[index].concluida = input.checked;
+        salvarMetas(metas);
+        renderizarMetas();
+      });
 
-        setTimeout(() => {
-          indiceAtual++;
-          if (indiceAtual < quizPerguntas.length) {
-            mostrarPergunta();
-          } else {
-            mostrarResultadoFinal();
-          }
-        }, 1000); // Delay de 1 segundo para ver o feedback
-      };
+      const span = document.createElement("span");
+      span.textContent = meta.texto;
+      if (meta.concluida) {
+        span.classList.add("concluida");
+      }
 
-      opcoesContainer.appendChild(botao);
+      const botaoRemover = document.createElement("button");
+      botaoRemover.textContent = "×";
+      botaoRemover.className = "remover-meta";
+      botaoRemover.addEventListener("click", (e) => {
+        e.stopPropagation();
+        metas.splice(index, 1);
+        salvarMetas(metas);
+        renderizarMetas();
+      });
+
+      label.appendChild(input);
+      label.appendChild(span);
+      li.appendChild(label);
+      li.appendChild(botaoRemover);
+      listaMetas.appendChild(li);
     });
   }
 
-  function mostrarResultadoFinal() {
-    let mensagemFinal = "";
-
-    if (acertos === quizPerguntas.length) {
-      mensagemFinal = "Você é uma gênia do amor! 💘 Sabia tudo!";
-    } else if (acertos >= 2) {
-      mensagemFinal = "Mandou bem! Só esqueceu um detalhezinho 😅";
-    } else {
-      mensagemFinal =
-        "Hmm... acho que vamos ter que conversar isso com cuscuz na próxima vez 😂";
+  // Adicionar nova meta
+  botaoAdicionar.addEventListener("click", () => {
+    const textoMeta = inputNovaMeta.value.trim();
+    if (textoMeta) {
+      const metas = carregarMetas();
+      metas.push({ texto: textoMeta, concluida: false });
+      salvarMetas(metas);
+      inputNovaMeta.value = "";
+      renderizarMetas();
     }
+  });
 
-    document.getElementById("quiz-container").innerHTML = `
-      <h3>Resultado do Quiz 💞</h3>
-      <p>Você acertou <strong>${acertos}</strong> de <strong>${quizPerguntas.length}</strong> perguntas!</p>
-      <p>${mensagemFinal}</p>
-    `;
-  }
+  // Permitir adicionar com Enter
+  inputNovaMeta.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      botaoAdicionar.click();
+    }
+  });
 
-  // Iniciar o quiz
-  mostrarPergunta();
+  // Inicializar a lista de metas
+  renderizarMetas();
 });
