@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleConteudoPrincipal(false);
 
   function verificarSenha() {
-    fetch("https://ana-3-production.up.railway.app/login", {
+    fetch("https://backend-production-f69a.up.railway.app/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
