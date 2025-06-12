@@ -149,9 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
       legenda: "Dei valor a esse dia KKKKKKKK",
     },
 
-    { tipo: "video", src: "./assets/video1.mp4", alt: "", legenda: "" },
-    { tipo: "video", src: "./assets/video2.mp4", alt: "", legenda: "" },
-    { tipo: "video", src: "./assets/video3.mp4", alt: "", legenda: "" },
+    { tipo: "video", src: "./assets/video1.mp4", alt: "", legenda: "Esse vídeo é muito bom KKKKKKKKK" },
+    { tipo: "video", src: "./assets/video2.mp4", alt: "", legenda: "Esse aqui pq eu dou valor mermo" },
+    { tipo: "video", src: "./assets/video3.mp4", alt: "", legenda: "SEM COMENTÁRIOS" },
   ];
 
   // Inicializa o carrossel de momentos
