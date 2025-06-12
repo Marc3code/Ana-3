@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "❤️ Seu cheirinho ❤️",
     "❤️ Nossas tardes de risadas, morgação, açaízin, filminhos, xadras, peripecinhas hihi e muito carinho ❤️",
     "❤️ Que você leva em consideração o que eu digo, mesmo quando minhas colocações não são as melhores. Isso faz eu me sentir importante, ouvido e respeitado por você. ❤️",
+    "❤️Seu sorriso. Muitxo fofinho os dentinhos de criança KKKKK❤️",
   ];
 
   let indexFrase = 0;
