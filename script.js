@@ -26,45 +26,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 2000);
 
   // Carrossel de Momentos Especiais
-  const carrosselSlides = document.querySelector('.carrossel-slides');
-  const carrosselIndicadores = document.querySelector('.carrossel-indicadores');
+  const carrosselSlides = document.querySelector(".carrossel-slides");
+  const carrosselIndicadores = document.querySelector(".carrossel-indicadores");
   let slideAtual = 0;
 
   const momentos = [
     {
-      tipo: 'imagem',
-      src: './assets/mulher-bonita-olhando-para-o-namorado.jpg',
-      alt: 'Nossa foto juntos',
-      legenda: 'Nosso primeiro encontro 💖'
+      tipo: "imagem",
+      src: "./assets/mulher-bonita-olhando-para-o-namorado.jpg",
+      alt: "Nossa foto juntos",
+      legenda: "Nosso primeiro encontro 💖",
     },
     {
-      tipo: 'video',
-      src: 'https://www.w3schools.com/html/mov_bbb.mp4',
-      legenda: 'Um momento especial'
+      tipo: "video",
+      src: "https://www.w3schools.com/html/mov_bbb.mp4",
+      legenda: "Um momento especial",
     },
     {
-      tipo: 'imagem',
-      src: 'https://via.placeholder.com/600x400?text=Nossa+viagem',
-      alt: 'Nossa viagem',
-      legenda: 'Quando fomos viajar juntos ✈️'
+      tipo: "imagem",
+      src: "https://via.placeholder.com/600x400?text=Nossa+viagem",
+      alt: "Nossa viagem",
+      legenda: "Quando fomos viajar juntos ✈️",
     },
     {
-      tipo: 'imagem',
-      src: 'https://via.placeholder.com/600x400?text=Aniversário',
-      alt: 'Meu aniversário',
-      legenda: 'Meu aniversário com você 🎂'
-    }
+      tipo: "imagem",
+      src: "https://via.placeholder.com/600x400?text=Aniversário",
+      alt: "Meu aniversário",
+      legenda: "Meu aniversário com você 🎂",
+    },
   ];
 
   // Inicializa o carrossel de momentos
   function inicializarCarrossel() {
     momentos.forEach((momento, index) => {
-      const slide = document.createElement('div');
-      slide.className = 'carrossel-item';
-      
-      if (momento.tipo === 'imagem') {
+      const slide = document.createElement("div");
+      slide.className = "carrossel-item";
+
+      if (momento.tipo === "imagem") {
         slide.innerHTML = `
-          <img src="${momento.src}" alt="${momento.alt || 'Nosso momento'}">
+          <img src="${momento.src}" alt="${momento.alt || "Nosso momento"}">
           <p class="legenda">${momento.legenda}</p>
         `;
       } else {
@@ -76,28 +76,28 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="legenda">${momento.legenda}</p>
         `;
       }
-      
+
       carrosselSlides.appendChild(slide);
-      
+
       // Criar indicadores
-      const indicador = document.createElement('div');
-      indicador.className = 'indicador';
-      indicador.addEventListener('click', () => irParaSlide(index));
+      const indicador = document.createElement("div");
+      indicador.className = "indicador";
+      indicador.addEventListener("click", () => irParaSlide(index));
       carrosselIndicadores.appendChild(indicador);
     });
-    
+
     atualizarIndicadores();
   }
 
   function moverCarrossel(direcao) {
     slideAtual += direcao;
-    
+
     if (slideAtual < 0) {
       slideAtual = momentos.length - 1;
     } else if (slideAtual >= momentos.length) {
       slideAtual = 0;
     }
-    
+
     atualizarCarrossel();
   }
 
@@ -112,11 +112,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function atualizarIndicadores() {
-    const indicadores = document.querySelectorAll('.indicador');
+    const indicadores = document.querySelectorAll(".indicador");
     indicadores.forEach((ind, index) => {
-      ind.classList.toggle('ativo', index === slideAtual);
+      ind.classList.toggle("ativo", index === slideAtual);
     });
   }
+
+  // Adiciona os event listeners para as setas
+  document
+    .querySelector(".prev")
+    .addEventListener("click", () => moverCarrossel(-1));
+  document
+    .querySelector(".next")
+    .addEventListener("click", () => moverCarrossel(1));
 
   // Iniciar carrossel de momentos
   inicializarCarrossel();
