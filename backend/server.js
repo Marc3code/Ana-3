@@ -5,11 +5,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://ana-3-production.up.railway.app/",
-    methods: ["POST"],
-    credentials: true,
+    origin: '*',
+    methods: ["POST", "OPTIONS"],
+    credentials: false, 
   })
 );
+
 
 app.use(express.json());
 
