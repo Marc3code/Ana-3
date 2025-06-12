@@ -2,6 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
+app.use(
+  cors({
+    origin: "https://ana-3-production.up.railway.app/",
+    methods: ["POST"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 const SENHA_CORRETA = process.env.SENHA_CORRETA;
