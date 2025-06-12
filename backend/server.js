@@ -1,16 +1,15 @@
 require("dotenv").config();
-const cors = require('cors')
+const cors = require("cors");
 const express = require("express");
 const app = express();
 
 app.use(
   cors({
-    origin: '*',
+    origin: "*",
     methods: ["POST", "OPTIONS"],
-    credentials: false, 
+    credentials: false,
   })
 );
-
 
 app.use(express.json());
 
@@ -18,6 +17,7 @@ const SENHA_CORRETA = process.env.SENHA_CORRETA;
 console.log(SENHA_CORRETA);
 
 app.post("/login", (req, res) => {
+  console.log("webhook acessado");
   const senha = req.body.senha;
 
   if (!senha) {
