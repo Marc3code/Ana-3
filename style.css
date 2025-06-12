@@ -1,0 +1,237 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom, #ffe6e6, #ffffff);
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+header {
+  background: #ffb6c1;
+  padding: 2rem 1rem;
+  color: white;
+}
+
+h1,
+h2 {
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+section {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+button {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  margin: 0.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #e754a5;
+}
+
+#conteudo-surpresa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+#conteudo-surpresa img,
+#conteudo-surpresa video {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background: #ffb6c1;
+  color: white;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Corações flutuantes */
+.hearts::before {
+  content: "💖 💘 💝 💗 💓 💞 💕";
+  font-size: 2rem;
+  display: block;
+  animation: flutuar 8s linear infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes flutuar {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+
+.carrossel {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estilos do Carrossel */
+#carrossel-momentos {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carrossel-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carrossel-slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carrossel-item {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.carrossel-item img,
+.carrossel-item video {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+}
+
+.carrossel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 105, 180, 0.7);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: all 0.3s;
+}
+
+.carrossel-btn:hover {
+  background-color: rgba(255, 105, 180, 0.9);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.carrossel-indicadores {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+.indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.indicador.ativo {
+  background-color: #ff69b4;
+}
+
+.carrossel p {
+  font-size: 1.3rem;
+  color: #ff4d88;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+#quiz-container {
+  margin-top: 1rem;
+}
+
+#quiz-opcoes {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#quiz-opcoes button {
+  width: fit-content;
+  margin: auto;
+  padding: 0.6rem 1.2rem;
+}
+
+#btn-surpresa {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#btn-surpresa:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#btn-surpresa:active {
+  transform: scale(0.98);
+}
+
+.hidden {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+#conteudo-surpresa {
+  opacity: 1;
+  height: auto;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Dia dos Namorados 💖</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="hearts"></div>
+
+    <header>
+      <h1>Feliz Dia dos Namorados 💘</h1>
+    </header>
+
+    <section id="motivos">
+      <h2>10 Coisas que Amo em Você</h2>
+      <div class="carrossel">
+        <p id="frase-atual">Seu sorriso contagiante</p>
+      </div>
+    </section>
+
+    <section id="carrossel-momentos">
+      <h2>Nossos Momentos Especiais 📸</h2>
+      <div class="carrossel-container">
+        <button class="carrossel-btn prev" onclick="moverCarrossel(-1)">
+          ❮
+        </button>
+
+        <div class="carrossel-slides">
+          <!-- Itens serão adicionados via JavaScript -->
+        </div>
+
+        <button class="carrossel-btn next" onclick="moverCarrossel(1)">
+          ❯
+        </button>
+      </div>
+      <div class="carrossel-indicadores"></div>
+    </section>
+
+    <section id="quiz">
+      <h2>Quiz do Amor</h2>
+      <div id="quiz-container">
+        <p id="quiz-pergunta"></p>
+        <div id="quiz-opcoes"></div>
+      </div>
+    </section>
+
+    <section id="mapa">
+      <h2>Mapa de Momentos 🗺️</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.4905085086644!2d-37.34732582503645!3d-5.187100652358184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b275aaedee6a9f%3A0xd312bd9b80d4e2de!2sCol%C3%A9gio%20Sagrado%20Cora%C3%A7%C3%A3o%20de%20Maria!5e0!3m2!1spt-BR!2sbr!4v1718123882934!5m2!1spt-BR!2sbr"
+        width="100%"
+        height="480"
+        style="border: 0; border-radius: 8px"
+        allowfullscreen=""
+        loading="lazy"
+      >
+      </iframe>
+      <p>* Locais especiais em Mossoró-RN:</p>
+      <ul>
+        <li>Colégio Sagrado Coração de Maria</li>
+        <li>Mossoró West Shopping</li>
+        <li>Residencial Dolce Vita</li>
+        <li>Residencial Rubens Pinto</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Feito com amor pra minha gatinhaa💗</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
