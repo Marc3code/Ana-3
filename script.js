@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Carrossel de frases
   const frases = [
-    "Seu sorriso contagiante",
-    "Seu abraço que me acalma",
-    "Seu jeito carinhoso",
-    "Como você cuida de mim",
-    "Seu bom humor",
-    "Seu olhar apaixonante",
-    "Como você me incentiva",
-    "Seu cheirinho",
-    "Nossas risadas juntos",
-    "Você ser simplesmente você 💕",
+    "❤️ Seu cuidado comigo, apesar das vezes vir em forma de batido hihi, mas mesmo assim amo ❤️",
+    "❤️ Abracinho de recepção todo sabadinho depois de cada década chamada semana que a gente fica longe ❤️",
+    "❤️ Todo esforço que você já fez e faz pra cuidar da nossa relação ❤️",
+    "❤️ Sua vontade de crescermos juntos ❤️",
+    "❤️ O sinalzinho no nariz KKKKKKKK ❤️",
+    "❤️ Como você me incentiva em todas as ideias de projeto que tenho, apesar de eu nao ter concluído quase nenhuma KKKKKKKK (vai mudar isso aeee hum) ❤️",
+    "❤️ Seu cheirinho ❤️",
+    "❤️ Nossas tardes de risadas, morgação, açaízin, filminhos, xadras, peripecinhas hihi e muito carinho ❤️",
+    "❤️ Que você leva em consideração o que eu digo, mesmo quando minhas colocações não são as melhores. Isso faz eu me sentir importante, ouvido e respeitado por você. ❤️",
   ];
 
   let indexFrase = 0;
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       elementoFrase.textContent = frases[indexFrase];
       elementoFrase.style.opacity = 1;
     }, 1000);
-  }, 2000);
+  }, 5000);
 
   // Carrossel de Momentos Especiais
   const carrosselSlides = document.querySelector(".carrossel-slides");
@@ -136,16 +135,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const quizPerguntas = [
     {
       pergunta: "Qual é o meu apelido favorito que você me chama?",
+      nivel: "Fácil",
       opcoes: ["Mozin", "Amor", "Gatinho", "Neném"],
       correta: "Mozin",
     },
     {
       pergunta: "Onde foi nosso primeiro encontro?",
+      nivel: "Média",
       opcoes: ["Shopping", "Praça", "Colégio", "Casa de um amigo"],
       correta: "Shopping",
     },
     {
       pergunta: "Qual dessas comidas a gente ama comer juntinhos?",
+      nivel: "Difícil",
       opcoes: ["Pizza", "Cuscuz", "Sorvete", "Hambúrguer"],
       correta: "Cuscuz",
     },
@@ -161,6 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const opcoesContainer = document.getElementById("quiz-opcoes");
     opcoesContainer.innerHTML = "";
+
+    const nivelContainer = document.getElementById("nivel");
+    nivelContainer.innerHTML = `Nível: ${perguntaAtual.nivel}`;
 
     perguntaAtual.opcoes.forEach((opcao) => {
       const botao = document.createElement("button");

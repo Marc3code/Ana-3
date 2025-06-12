@@ -16,7 +16,9 @@
     <section id="motivos">
       <h2>10 Coisas que Amo em Você</h2>
       <div class="carrossel">
-        <p id="frase-atual">Seu sorriso contagiante</p>
+        <p id="frase-atual">
+          ❤️Seu sorriso. Muitxo fofinho os dentinhos de criança KKKKK❤️
+        </p>
       </div>
     </section>
 
@@ -43,28 +45,27 @@
       <div id="quiz-container">
         <p id="quiz-pergunta"></p>
         <div id="quiz-opcoes"></div>
+        <div id="nivel"></div>
       </div>
     </section>
 
     <section id="mapa">
-      <h2>Mapa de Momentos 🗺️</h2>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.4905085086644!2d-37.34732582503645!3d-5.187100652358184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b275aaedee6a9f%3A0xd312bd9b80d4e2de!2sCol%C3%A9gio%20Sagrado%20Cora%C3%A7%C3%A3o%20de%20Maria!5e0!3m2!1spt-BR!2sbr!4v1718123882934!5m2!1spt-BR!2sbr"
-        width="100%"
-        height="480"
-        style="border: 0; border-radius: 8px"
-        allowfullscreen=""
-        loading="lazy"
-      >
-      </iframe>
-      <p>* Locais especiais em Mossoró-RN:</p>
-      <ul>
-        <li>Colégio Sagrado Coração de Maria</li>
-        <li>Mossoró West Shopping</li>
-        <li>Residencial Dolce Vita</li>
-        <li>Residencial Rubens Pinto</li>
-      </ul>
+      <h2>Locais de Momentos Importantes</h2>
+      <h3 class="subtitulo-mapa">Lembra o que aconteceu em cada lugar?</h3>
+
+      <div class="container-mapa">
+        <div id="map"></div>
+      </div>
     </section>
+
+    <script src="./mapsScript.js"></script>
+
+    <!-- Carrega a API do Google Maps -->
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqeiuLsyLhHeBsMP-mSuaB3iWlIZ7GXWY&callback=initMap"
+    ></script>
 
     <footer>
       <p>Feito com amor pra minha gatinhaa💗</p>
